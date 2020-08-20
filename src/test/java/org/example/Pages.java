@@ -13,10 +13,6 @@ public class Pages {
     private static LayerCartForm layerCartForm;
     private static SignInPage signInPage;
 
-    static {
-
-    }
-
     public static MainPage mainPage() {
         if (mainPage == null) {
             mainPage = PageFactory.initElements(WebDriverRunner.getWebDriver(), MainPage.class);

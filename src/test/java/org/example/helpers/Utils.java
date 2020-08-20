@@ -30,26 +30,30 @@ public class Utils {
     }
 
     public static WebElement elementShouldBe(Condition condition, Object element) {
+        if (!(element instanceof By || element instanceof WebElement)) {
+            throw new IllegalArgumentException("Передан некорректный параметр element");
+        }
+
         ExpectedCondition<WebElement> elementExpectedCondition = null;
 
         switch (condition) {
             case CLICKABLE:
-                elementExpectedCondition = ExpectedConditions.elementToBeClickable((By)element);
+                if (element instanceof By) {
+                    elementExpectedCondition = ExpectedConditions.elementToBeClickable((By) element);
+                }
                 break;
             case VISIBLE:
                 if (element instanceof By) {
                     elementExpectedCondition = ExpectedConditions.visibilityOfElementLocated((By)element);
                 }
-                else if (element instanceof WebElement) {
-                    elementExpectedCondition = ExpectedConditions.visibilityOf((WebElement)element);
-                }
                 else {
-                    throw new IllegalArgumentException("Передан некорректный параметр element");
+                    elementExpectedCondition = ExpectedConditions.visibilityOf((WebElement)element);
                 }
 
                 break;
         }
 
+        assert elementExpectedCondition != null : "Ошибка: elementExpectedCondition is null";
         return webDriverWait.until(elementExpectedCondition);
     }
 
