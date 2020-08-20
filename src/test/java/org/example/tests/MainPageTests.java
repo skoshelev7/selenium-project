@@ -31,10 +31,9 @@ public class MainPageTests {
     @Test
     public void addToCartTest() {
         mainPage().clickAddToCartButton(0);
-
         Assert.assertTrue(layerCartForm().formIsDisplayed());
 
-        BaseActions.clickSpanButton("Continue shopping");
+        layerCartForm().clickContinueShoppingButton();
         Assert.assertTrue(Utils.pageIsOpened(PagesEnum.MAIN_PAGE));
     }
 

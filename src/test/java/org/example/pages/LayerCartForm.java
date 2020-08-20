@@ -1,10 +1,13 @@
 package org.example.pages;
 
+import org.example.actions.BaseActions;
 import org.example.helpers.Utils;
 import org.example.enums.Condition;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
+import static org.example.Pages.mainPage;
 
 public class LayerCartForm {
 
@@ -13,5 +16,10 @@ public class LayerCartForm {
 
     public boolean formIsDisplayed() {
         return Utils.elementShouldBe(Condition.VISIBLE, layerCartForm).isDisplayed();
+    }
+
+    public MainPage clickContinueShoppingButton() {
+        BaseActions.clickSpanButton("Continue shopping");
+        return mainPage();
     }
 }

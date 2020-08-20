@@ -43,6 +43,10 @@ public class Utils {
                 else if (element instanceof WebElement) {
                     elementExpectedCondition = ExpectedConditions.visibilityOf((WebElement)element);
                 }
+                else {
+                    throw new IllegalArgumentException("Передан некорректный параметр element");
+                }
+
                 break;
         }
 
