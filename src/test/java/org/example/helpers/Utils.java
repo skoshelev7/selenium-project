@@ -1,7 +1,6 @@
 package org.example.helpers;
 
 import org.example.configs.Parameters;
-import org.example.WebDriverRunner;
 import org.example.enums.Condition;
 import org.example.enums.PagesEnum;
 import org.openqa.selenium.By;

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.actions.BaseActions;
 import org.example.pages.LayerCartForm;
 import org.example.pages.MainPage;
 import org.example.pages.SearchPage;
@@ -14,6 +15,16 @@ public class Pages {
     private SearchPage searchPage;
     private LayerCartForm layerCartForm;
     private SignInPage signInPage;
+
+    private BaseActions baseActions;
+
+    public Pages() {
+        baseActions = new BaseActions();
+    }
+
+    public BaseActions baseActions() {
+        return baseActions;
+    }
 
     public MainPage mainPage() {
         if (mainPage == null) {

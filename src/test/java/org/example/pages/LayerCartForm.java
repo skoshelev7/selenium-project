@@ -1,6 +1,5 @@
 package org.example.pages;
 
-import org.example.actions.BaseActions;
 import org.example.helpers.Utils;
 import org.example.enums.Condition;
 import org.openqa.selenium.WebElement;
@@ -19,7 +18,8 @@ public class LayerCartForm {
     }
 
     public MainPage clickContinueShoppingButton() {
-        BaseActions.clickSpanButton("Continue shopping");
+        pages().baseActions()
+                .clickSpanButton("Continue shopping");
         return pages().mainPage();
     }
 }

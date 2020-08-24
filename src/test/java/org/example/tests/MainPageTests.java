@@ -1,9 +1,6 @@
 package org.example.tests;
 
-import org.example.configs.Parameters;
 import org.example.helpers.Utils;
-import org.example.actions.BaseActions;
-import org.example.actions.MainPageActions;
 import org.example.enums.PagesEnum;
 import org.junit.*;
 
@@ -14,12 +11,13 @@ public class MainPageTests {
 
     @Before
     public void setUp() {
-        BaseActions.openPage();
+        pages().mainPage().openPage();
     }
 
     @Test
     public void searchProductTest() {
-        MainPageActions.enterSearchFieldAndClickSearchButton("Blouse");
+        pages().mainPage().actions()
+                .enterSearchFieldAndClickSearchButton("Blouse");
 
         Assert.assertTrue(Utils.pageIsOpened(PagesEnum.SEARCH_PAGE));
         Assert.assertEquals("1 result has been found.", pages().searchPage().getHeadingCounterText());
@@ -36,7 +34,7 @@ public class MainPageTests {
 
     @Test
     public void signInTest() {
-        BaseActions.signIn(Parameters.testEmail, Parameters.testPassword);
+        pages().baseActions().signIn("account123@test.com", "12345");
         Assert.assertTrue(Utils.pageIsOpened(PagesEnum.MY_ACCOUNT));
     }
 

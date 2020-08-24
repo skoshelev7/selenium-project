@@ -1,6 +1,6 @@
 package org.example.pages;
 
-import org.example.actions.BaseActions;
+import org.example.actions.SignInPageActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -18,6 +18,15 @@ public class SignInPage {
     @FindBy(how = How.XPATH, using = "//div[@class='alert alert-danger']//ol/li")
     private WebElement errorMessage;
 
+    private SignInPageActions signInPageActions;
+
+    public SignInPageActions actions() {
+        if (signInPageActions == null) {
+            signInPageActions = new SignInPageActions();
+        }
+        return signInPageActions;
+    }
+
     public SignInPage enterEmailSignInForm(String email) {
         emailFieldSignInForm.sendKeys(email);
         return pages().signInPage();
@@ -33,6 +42,7 @@ public class SignInPage {
     }
 
     public void clickSignInButton() {
-        BaseActions.clickSpanButton("Sign in");
+        pages().baseActions()
+                .clickSpanButton("Sign in");
     }
 }

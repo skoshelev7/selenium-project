@@ -1,8 +1,7 @@
 package org.example.pages;
 
-import org.example.WebDriverRunner;
-import org.example.helpers.Utils;
-import org.example.actions.BaseActions;
+import org.example.actions.MainPageActions;
+import org.example.configs.Parameters;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 
-import static org.example.Pages.*;
 import static org.example.ThreadObjects.pages;
 import static org.example.ThreadObjects.webDriverRunner;
 
@@ -28,6 +26,20 @@ public class MainPage {
     @FindBy(how = How.XPATH, using = "//a[@class='login']")
     private WebElement signInLink;
 
+    private MainPageActions mainPageActions;
+
+    public MainPageActions actions() {
+        if (mainPageActions == null) {
+            mainPageActions = new MainPageActions();
+        }
+        return mainPageActions;
+    }
+
+    public MainPage openPage() {
+        webDriverRunner().getWebDriver().get(Parameters.BASE_URL);
+        return this;
+    }
+
     public MainPage enterSearchField(String searchText) {
         searchField.sendKeys(searchText);
         return this;
@@ -40,12 +52,15 @@ public class MainPage {
 
     public LayerCartForm clickAddToCartButton(Integer number) {
         this.moveToElement(listOfProducts.get(number));
-        BaseActions.clickSpanButton("Add to cart");
+        pages().baseActions()
+                .clickSpanButton("Add to cart");
         return pages().layerCartForm();
     }
 
     private void moveToElement(WebElement element) {
-        new Actions(webDriverRunner().getWebDriver()).moveToElement(element).perform();
+        new Actions(webDriverRunner().getWebDriver())
+                .moveToElement(element)
+                .perform();
     }
 
     public SignInPage clickSignInLink() {
