@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import static org.example.Pages.mainPage;
+import static org.example.ThreadObjects.pages;
 
 public class LayerCartForm {
 
@@ -20,6 +20,6 @@ public class LayerCartForm {
 
     public MainPage clickContinueShoppingButton() {
         BaseActions.clickSpanButton("Continue shopping");
-        return mainPage();
+        return pages().mainPage();
     }
 }

@@ -6,8 +6,7 @@ import org.example.enums.Condition;
 import org.example.helpers.Utils;
 import org.openqa.selenium.By;
 
-import static org.example.Pages.mainPage;
-import static org.example.Pages.signInPage;
+import static org.example.ThreadObjects.pages;
 
 public class BaseActions {
 
@@ -26,8 +25,8 @@ public class BaseActions {
     }
 
     public static void signIn(String email, String password) {
-        mainPage().clickSignInLink();
-        signInPage()
+        pages().mainPage().clickSignInLink();
+        pages().signInPage()
                 .enterEmailSignInForm(email)
                 .enterPassword(password)
                 .clickSignInButton();

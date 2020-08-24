@@ -8,12 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Pages {
 
-    private static MainPage mainPage;
-    private static SearchPage searchPage;
-    private static LayerCartForm layerCartForm;
-    private static SignInPage signInPage;
+    private MainPage mainPage;
+    private SearchPage searchPage;
+    private LayerCartForm layerCartForm;
+    private SignInPage signInPage;
 
-    public static MainPage mainPage() {
+    public MainPage mainPage() {
         if (mainPage == null) {
             mainPage = PageFactory.initElements(WebDriverRunner.getWebDriver(), MainPage.class);
         }
@@ -21,7 +21,7 @@ public class Pages {
         return mainPage;
     }
 
-    public static SearchPage searchPage() {
+    public SearchPage searchPage() {
         if (searchPage == null) {
             searchPage = PageFactory.initElements(WebDriverRunner.getWebDriver(), SearchPage.class);
         }
@@ -29,7 +29,7 @@ public class Pages {
         return searchPage;
     }
 
-    public static LayerCartForm layerCartForm() {
+    public LayerCartForm layerCartForm() {
         if (layerCartForm == null) {
             layerCartForm = PageFactory.initElements(WebDriverRunner.getWebDriver(), LayerCartForm.class);
         }
@@ -37,7 +37,7 @@ public class Pages {
         return layerCartForm;
     }
 
-    public static SignInPage signInPage() {
+    public SignInPage signInPage() {
         if (signInPage == null) {
             signInPage = PageFactory.initElements(WebDriverRunner.getWebDriver(), SignInPage.class);
         }

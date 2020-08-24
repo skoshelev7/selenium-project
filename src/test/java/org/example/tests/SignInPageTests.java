@@ -7,8 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.example.Pages.mainPage;
-import static org.example.Pages.signInPage;
+import static org.example.ThreadObjects.pages;
 import static org.example.WebDriverRunner.close;
 
 public class SignInPageTests {
@@ -20,31 +19,31 @@ public class SignInPageTests {
         signInPageActions = new SignInPageActions();
 
         BaseActions.openPage();
-        mainPage().clickSignInLink();
+        pages().mainPage().clickSignInLink();
     }
 
     @Test
     public void incorrectEmailTest() {
         signInPageActions.enterEmailAndPassword("email", "password").clickSignInButton();
-        Assert.assertEquals("Invalid email address.", signInPage().getErrorMessageText());
+        Assert.assertEquals("Invalid email address.", pages().signInPage().getErrorMessageText());
     }
 
     @Test
     public void emptyEmailTest() {
         signInPageActions.enterEmailAndPassword("", "password").clickSignInButton();
-        Assert.assertEquals("An email address required.", signInPage().getErrorMessageText());
+        Assert.assertEquals("An email address required.", pages().signInPage().getErrorMessageText());
     }
 
     @Test
     public void incorrectPasswordTest() {
         signInPageActions.enterEmailAndPassword("account123@test.com", "password").clickSignInButton();
-        Assert.assertEquals("Invalid password.", signInPage().getErrorMessageText());
+        Assert.assertEquals("Authentication failed.", pages().signInPage().getErrorMessageText());
     }
 
     @Test
     public void emptyPasswordTest() {
-        signInPageActions.enterEmailAndPassword("email", "password").clickSignInButton();
-        Assert.assertEquals("Password is required.", signInPage().getErrorMessageText());
+        signInPageActions.enterEmailAndPassword("account123@test.com", "").clickSignInButton();
+        Assert.assertEquals("Password is required.", pages().signInPage().getErrorMessageText());
     }
 
     @After

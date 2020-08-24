@@ -1,11 +1,11 @@
 package org.example.actions;
 
-import static org.example.Pages.mainPage;
+import static org.example.ThreadObjects.pages;
 
 public class MainPageActions {
 
     public static void enterSearchFieldAndClickSearchButton(String searchText) {
-        mainPage()
+        pages().mainPage()
                 .enterSearchField(searchText)
                 .clickSearchButton();
     }

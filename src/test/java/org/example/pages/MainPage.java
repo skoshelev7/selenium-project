@@ -11,6 +11,7 @@ import org.openqa.selenium.support.How;
 import java.util.List;
 
 import static org.example.Pages.*;
+import static org.example.ThreadObjects.pages;
 
 public class MainPage {
 
@@ -33,13 +34,13 @@ public class MainPage {
 
     public SearchPage clickSearchButton() {
         searchButton.click();
-        return searchPage();
+        return pages().searchPage();
     }
 
     public LayerCartForm clickAddToCartButton(Integer number) {
         this.moveToElement(listOfProducts.get(number));
         BaseActions.clickSpanButton("Add to cart");
-        return layerCartForm();
+        return pages().layerCartForm();
     }
 
     private void moveToElement(WebElement element) {
@@ -48,6 +49,6 @@ public class MainPage {
 
     public SignInPage clickSignInLink() {
         signInLink.click();
-        return signInPage();
+        return pages().signInPage();
     }
 }

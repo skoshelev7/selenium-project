@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import static org.example.Pages.signInPage;
+import static org.example.ThreadObjects.pages;
 
 public class SignInPage {
 
@@ -20,12 +20,12 @@ public class SignInPage {
 
     public SignInPage enterEmailSignInForm(String email) {
         emailFieldSignInForm.sendKeys(email);
-        return signInPage();
+        return pages().signInPage();
     }
 
     public SignInPage enterPassword(String password) {
         passwordField.sendKeys(password);
-        return signInPage();
+        return pages().signInPage();
     }
 
     public String getErrorMessageText() {
