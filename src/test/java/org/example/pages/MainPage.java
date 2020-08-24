@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.example.Pages.*;
 import static org.example.ThreadObjects.pages;
+import static org.example.ThreadObjects.webDriverRunner;
 
 public class MainPage {
 
@@ -44,7 +45,7 @@ public class MainPage {
     }
 
     private void moveToElement(WebElement element) {
-        new Actions(WebDriverRunner.getWebDriver()).moveToElement(element).perform();
+        new Actions(webDriverRunner().getWebDriver()).moveToElement(element).perform();
     }
 
     public SignInPage clickSignInLink() {

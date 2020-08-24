@@ -2,13 +2,10 @@ package org.example.tests;
 
 import org.example.actions.BaseActions;
 import org.example.actions.SignInPageActions;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import static org.example.ThreadObjects.pages;
-import static org.example.WebDriverRunner.close;
+import static org.example.ThreadObjects.webDriverRunner;
 
 public class SignInPageTests {
 
@@ -46,8 +43,8 @@ public class SignInPageTests {
         Assert.assertEquals("Password is required.", pages().signInPage().getErrorMessageText());
     }
 
-    @After
-    public void after() {
-        close();
+    @AfterClass
+    public static void afterClass() {
+        webDriverRunner().close();
     }
 }

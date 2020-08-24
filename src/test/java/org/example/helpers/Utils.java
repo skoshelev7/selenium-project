@@ -6,7 +6,6 @@ import org.example.enums.Condition;
 import org.example.enums.PagesEnum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,13 +13,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.example.ThreadObjects.webDriverRunner;
+
 public class Utils {
 
     private static WebDriverWait webDriverWait;
     private static HashMap<String, String> pages;
 
     static {
-        webDriverWait = new WebDriverWait(WebDriverRunner.getWebDriver(), Parameters.TIME_OUT);
+        webDriverWait = new WebDriverWait(webDriverRunner().getWebDriver(), Parameters.TIME_OUT);
         pages = new HashMap<String, String>() {{
             put("Main page", "http://automationpractice.com/index.php");
             put("Search page", "controller=search");
@@ -58,7 +59,7 @@ public class Utils {
     }
 
     public static boolean pageIsOpened(PagesEnum pagesEnum) {
-        String currentPage = WebDriverRunner.getWebDriver().getCurrentUrl();
+        String currentPage = webDriverRunner().getWebDriver().getCurrentUrl();
         for (Map.Entry<String, String> pair : pages.entrySet()) {
             if (pair.getKey().equals(pagesEnum.getName())) {
                 String value = pair.getValue();

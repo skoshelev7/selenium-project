@@ -7,15 +7,16 @@ import org.example.helpers.Utils;
 import org.openqa.selenium.By;
 
 import static org.example.ThreadObjects.pages;
+import static org.example.ThreadObjects.webDriverRunner;
 
 public class BaseActions {
 
     public static void openPage() {
-        WebDriverRunner.getWebDriver().get(Parameters.BASE_URL);
+        webDriverRunner().getWebDriver().get(Parameters.BASE_URL);
     }
 
     public static void openPage(String url) {
-        WebDriverRunner.getWebDriver().get(url);
+        webDriverRunner().getWebDriver().get(url);
     }
 
     public static void clickSpanButton(String buttonName) {

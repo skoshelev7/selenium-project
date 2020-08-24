@@ -5,14 +5,10 @@ import org.example.helpers.Utils;
 import org.example.actions.BaseActions;
 import org.example.actions.MainPageActions;
 import org.example.enums.PagesEnum;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
-import static org.example.Pages.*;
 import static org.example.ThreadObjects.pages;
-import static org.example.WebDriverRunner.close;
+import static org.example.ThreadObjects.webDriverRunner;
 
 public class MainPageTests {
 
@@ -44,8 +40,8 @@ public class MainPageTests {
         Assert.assertTrue(Utils.pageIsOpened(PagesEnum.MY_ACCOUNT));
     }
 
-    @After
-    public void after() {
-        close();
+    @AfterClass
+    public static void afterClass() {
+        webDriverRunner().close();
     }
 }
